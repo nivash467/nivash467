@@ -1,0 +1,51 @@
+<svg viewBox="0 0 1200 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nivash M animated profile banner">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="nameGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D4AA"/>
+      <stop offset="55%" stop-color="#58A6FF"/>
+      <stop offset="100%" stop-color="#A371F7"/>
+      <animate attributeName="x1" values="0%;40%;0%" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="100%;140%;100%" dur="6s" repeatCount="indefinite"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00D4AA" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#00D4AA" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .particle { animation: drift 7s ease-in-out infinite; }
+      .particle.p2 { animation-duration: 9s; animation-delay: -2s; }
+      .particle.p3 { animation-duration: 5.5s; animation-delay: -4s; }
+      .particle.p4 { animation-duration: 8s; animation-delay: -1s; }
+      @keyframes drift {
+        0%   { transform: translate(0px, 0px); }
+        50%  { transform: translate(24px, -18px); }
+        100% { transform: translate(0px, 0px); }
+      }
+      .underline { animation: extend 2.4s ease-out forwards; }
+      @keyframes extend { from { stroke-dashoffset: 420; } to { stroke-dashoffset: 0; } }
+      .role { animation: fadeUp 1s ease-out 0.4s both; }
+      @keyframes fadeUp { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: translateY(0);} }
+    </style>
+  </defs>
+
+  <rect width="1200" height="280" fill="url(#bg)"/>
+  <circle cx="1000" cy="90" r="180" fill="url(#glow)"/>
+  <circle cx="140" cy="210" r="140" fill="url(#glow)"/>
+
+  <circle class="particle p1" cx="120" cy="60" r="3" fill="#00D4AA"/>
+  <circle class="particle p2" cx="1080" cy="200" r="4" fill="#58A6FF"/>
+  <circle class="particle p3" cx="960" cy="60" r="2.5" fill="#A371F7"/>
+  <circle class="particle p4" cx="220" cy="230" r="3" fill="#00D4AA"/>
+  <circle class="particle p2" cx="700" cy="40" r="2" fill="#58A6FF"/>
+  <circle class="particle p3" cx="60" cy="150" r="2" fill="#A371F7"/>
+
+  <text x="600" y="130" text-anchor="middle" font-family="'JetBrains Mono', 'Segoe UI', monospace" font-size="64" font-weight="700" fill="url(#nameGrad)">Nivash M</text>
+
+  <line class="underline" x1="390" y1="155" x2="810" y2="155" stroke="url(#nameGrad)" stroke-width="3" stroke-linecap="round" stroke-dasharray="420" stroke-dashoffset="420"/>
+
+  <text class="role" x="600" y="200" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="20" fill="#c9d1d9">AI &amp; ML Engineer · Full Stack Developer</text>
+</svg>

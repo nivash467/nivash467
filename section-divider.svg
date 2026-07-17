@@ -1,0 +1,14 @@
+<svg viewBox="0 0 1200 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="animated section divider">
+  <defs>
+    <linearGradient id="divGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D4AA" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#00D4AA"/>
+      <stop offset="50%" stop-color="#58A6FF"/>
+      <stop offset="80%" stop-color="#A371F7"/>
+      <stop offset="100%" stop-color="#A371F7" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <line x1="0" y1="12" x2="1200" y2="12" stroke="url(#divGrad)" stroke-width="2" stroke-dasharray="6 10">
+    <animate attributeName="stroke-dashoffset" values="0;-160" dur="4s" repeatCount="indefinite"/>
+  </line>
+</svg>
