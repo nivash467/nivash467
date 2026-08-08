@@ -1,14 +1,16 @@
-<svg viewBox="0 0 1200 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="animated section divider">
+<svg viewBox="0 0 1200 40" xmlns="http://www.w3.org/2000/svg" role="presentation">
   <defs>
-    <linearGradient id="divGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00D4AA" stop-opacity="0"/>
-      <stop offset="20%" stop-color="#00D4AA"/>
-      <stop offset="50%" stop-color="#58A6FF"/>
-      <stop offset="80%" stop-color="#A371F7"/>
-      <stop offset="100%" stop-color="#A371F7" stop-opacity="0"/>
+    <linearGradient id="div" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#0d1117" stop-opacity="0"/>
+      <stop offset="20%"  stop-color="#00D4AA" stop-opacity="0.5"/>
+      <stop offset="50%"  stop-color="#58A6FF" stop-opacity="0.8"/>
+      <stop offset="80%"  stop-color="#A371F7" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0"/>
+      <animate attributeName="x1" values="0%;30%;0%" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="100%;130%;100%" dur="6s" repeatCount="indefinite"/>
     </linearGradient>
   </defs>
-  <line x1="0" y1="12" x2="1200" y2="12" stroke="url(#divGrad)" stroke-width="2" stroke-dasharray="6 10">
-    <animate attributeName="stroke-dashoffset" values="0;-160" dur="4s" repeatCount="indefinite"/>
-  </line>
+  <line x1="0" y1="20" x2="1200" y2="20" stroke="url(#div)" stroke-width="1.5"/>
+  <!-- Center diamond -->
+  <polygon points="600,14 606,20 600,26 594,20" fill="#00D4AA" opacity="0.8"/>
 </svg>

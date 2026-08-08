@@ -1,69 +1,105 @@
-<svg viewBox="0 0 1200 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI ML production pipeline diagram">
+<svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI/ML Production Pipeline">
   <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
     <style>
-      .stage { fill: #161b22; stroke: #30363d; stroke-width: 1.5; }
-      .stageTitle { font-family: 'Segoe UI', sans-serif; font-size: 13px; font-weight: 700; fill: #e6edf3; }
-      .stageSub { font-family: 'Segoe UI', sans-serif; font-size: 10.5px; fill: #8b949e; }
-      .arrow { fill: none; stroke: #30363d; stroke-width: 2; }
-      .pulse { animation: pulse 2s ease-in-out infinite; }
-      @keyframes pulse { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
+      .node-box { animation: glow-pulse 3s ease-in-out infinite alternate; }
+      @keyframes glow-pulse { from { filter: drop-shadow(0 0 4px #00D4AA88); } to { filter: drop-shadow(0 0 10px #00D4AACC); } }
+      .arrow-path { animation: flow 2s linear infinite; stroke-dasharray: 8 4; }
+      .arrow-path.a2 { animation-delay: -0.7s; }
+      .arrow-path.a3 { animation-delay: -1.4s; }
+      .arrow-path.a4 { animation-delay: -0.35s; }
+      .arrow-path.a5 { animation-delay: -1.05s; }
+      @keyframes flow { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
+      .stage-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+      .stage-title { font-family: 'Segoe UI', sans-serif; font-weight: 700; font-size: 13px; }
     </style>
-    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-      <path d="M0,0 L8,4 L0,8 z" fill="#484f58"/>
-    </marker>
   </defs>
 
-  <path class="arrow" d="M 155 110 H 205" marker-end="url(#arrowhead)"/>
-  <path class="arrow" d="M 355 110 H 405" marker-end="url(#arrowhead)"/>
-  <path class="arrow" d="M 555 110 H 605" marker-end="url(#arrowhead)"/>
-  <path class="arrow" d="M 755 110 H 805" marker-end="url(#arrowhead)"/>
-  <path class="arrow" d="M 955 110 H 1005" marker-end="url(#arrowhead)"/>
+  <rect width="1200" height="200" fill="url(#bg)" rx="12"/>
 
-  <circle class="pulse" cx="180" cy="110" r="3" fill="#00D4AA"/>
-  <circle class="pulse" cx="380" cy="110" r="3" fill="#00D4AA"/>
-  <circle class="pulse" cx="580" cy="110" r="3" fill="#58A6FF"/>
-  <circle class="pulse" cx="780" cy="110" r="3" fill="#58A6FF"/>
-  <circle class="pulse" cx="980" cy="110" r="3" fill="#A371F7"/>
-
-  <g>
-    <rect class="stage" x="15" y="70" width="140" height="80" rx="10"/>
-    <text class="stageTitle" x="85" y="100" text-anchor="middle">Data</text>
-    <text class="stageTitle" x="85" y="118" text-anchor="middle">Ingestion</text>
-    <text class="stageSub" x="85" y="136" text-anchor="middle">CSV · APIs · Scraping</text>
+  <!-- Stage 1: Data Ingestion -->
+  <g class="node-box" transform="translate(30,60)">
+    <rect width="155" height="80" rx="10" fill="#0f1f1a" stroke="#00D4AA" stroke-width="1.5"/>
+    <text x="78" y="22" text-anchor="middle" class="stage-label" fill="#00D4AA">① INGEST</text>
+    <text x="78" y="42" text-anchor="middle" class="stage-title" fill="#e6edf3">Data Sources</text>
+    <text x="78" y="58" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="10" fill="#8b949e">CSV · API · SQL · JSON</text>
+    <text x="78" y="72" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="10" fill="#8b949e">Pandas · SQLite</text>
   </g>
 
-  <g>
-    <rect class="stage" x="215" y="70" width="140" height="80" rx="10"/>
-    <text class="stageTitle" x="285" y="100" text-anchor="middle">Preprocessing</text>
-    <text class="stageSub" x="285" y="120" text-anchor="middle">Pandas · NumPy</text>
-    <text class="stageSub" x="285" y="134" text-anchor="middle">NLP cleaning</text>
+  <!-- Arrow 1→2 -->
+  <line class="arrow-path a1" x1="185" y1="100" x2="218" y2="100" stroke="#00D4AA" stroke-width="2"/>
+  <polygon points="218,96 226,100 218,104" fill="#00D4AA"/>
+
+  <!-- Stage 2: Preprocessing -->
+  <g class="node-box" transform="translate(226,60)">
+    <rect width="155" height="80" rx="10" fill="#111827" stroke="#58A6FF" stroke-width="1.5"/>
+    <text x="78" y="22" text-anchor="middle" class="stage-label" fill="#58A6FF">② PROCESS</text>
+    <text x="78" y="42" text-anchor="middle" class="stage-title" fill="#e6edf3">Preprocessing</text>
+    <text x="78" y="58" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="10" fill="#8b949e">NLP · OpenCV · NumPy</text>
+    <text x="78" y="72" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="10" fill="#8b949e">Feature Engineering</text>
   </g>
 
-  <g>
-    <rect class="stage" x="415" y="70" width="140" height="80" rx="10"/>
-    <text class="stageTitle" x="485" y="100" text-anchor="middle">Model</text>
-    <text class="stageTitle" x="485" y="118" text-anchor="middle">Training</text>
-    <text class="stageSub" x="485" y="136" text-anchor="middle">scikit-learn</text>
+  <!-- Arrow 2→3 -->
+  <line class="arrow-path a2" x1="381" y1="100" x2="414" y2="100" stroke="#58A6FF" stroke-width="2"/>
+  <polygon points="414,96 422,100 414,104" fill="#58A6FF"/>
+
+  <!-- Stage 3: Training -->
+  <g class="node-box" transform="translate(422,60)">
+    <rect width="155" height="80" rx="10" fill="#130f1f" stroke="#A371F7" stroke-width="1.5"/>
+    <text x="78" y="22" text-anchor="middle" class="stage-label" fill="#A371F7">③ TRAIN</text>
+    <text x="78" y="42" text-anchor="middle" class="stage-title" fill="#e6edf3">Model Training</text>
+    <text x="78" y="58" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="10" fill="#8b949e">scikit-learn · TensorFlow</text>
+    <text x="78" y="72" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="10" fill="#8b949e">GridSearchCV · Cross-Val</text>
   </g>
 
-  <g>
-    <rect class="stage" x="615" y="70" width="140" height="80" rx="10"/>
-    <text class="stageTitle" x="685" y="100" text-anchor="middle">Evaluation</text>
-    <text class="stageSub" x="685" y="120" text-anchor="middle">Precision / Recall</text>
-    <text class="stageSub" x="685" y="134" text-anchor="middle">Confusion Matrix</text>
+  <!-- Arrow 3→4 -->
+  <line class="arrow-path a3" x1="577" y1="100" x2="610" y2="100" stroke="#A371F7" stroke-width="2"/>
+  <polygon points="610,96 618,100 610,104" fill="#A371F7"/>
+
+  <!-- Stage 4: Evaluate -->
+  <g class="node-box" transform="translate(618,60)">
+    <rect width="155" height="80" rx="10" fill="#0f1a1a" stroke="#00D4AA" stroke-width="1.5"/>
+    <text x="78" y="22" text-anchor="middle" class="stage-label" fill="#00D4AA">④ EVALUATE</text>
+    <text x="78" y="42" text-anchor="middle" class="stage-title" fill="#e6edf3">Metrics &amp; Testing</text>
+    <text x="78" y="58" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="10" fill="#8b949e">Accuracy · F1 · BLEU</text>
+    <text x="78" y="72" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="10" fill="#8b949e">Confusion Matrix</text>
   </g>
 
-  <g>
-    <rect class="stage" x="815" y="70" width="140" height="80" rx="10"/>
-    <text class="stageTitle" x="885" y="100" text-anchor="middle">API</text>
-    <text class="stageTitle" x="885" y="118" text-anchor="middle">Serving</text>
-    <text class="stageSub" x="885" y="136" text-anchor="middle">FastAPI</text>
+  <!-- Arrow 4→5 -->
+  <line class="arrow-path a4" x1="773" y1="100" x2="806" y2="100" stroke="#58A6FF" stroke-width="2"/>
+  <polygon points="806,96 814,100 806,104" fill="#58A6FF"/>
+
+  <!-- Stage 5: Deploy -->
+  <g class="node-box" transform="translate(814,60)">
+    <rect width="155" height="80" rx="10" fill="#111827" stroke="#58A6FF" stroke-width="1.5"/>
+    <text x="78" y="22" text-anchor="middle" class="stage-label" fill="#58A6FF">⑤ DEPLOY</text>
+    <text x="78" y="42" text-anchor="middle" class="stage-title" fill="#e6edf3">API &amp; Frontend</text>
+    <text x="78" y="58" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="10" fill="#8b949e">FastAPI · Flask · React</text>
+    <text x="78" y="72" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="10" fill="#8b949e">Vercel · Cloud</text>
   </g>
 
-  <g>
-    <rect class="stage" x="1015" y="70" width="170" height="80" rx="10"/>
-    <text class="stageTitle" x="1100" y="100" text-anchor="middle">Deployment</text>
-    <text class="stageSub" x="1100" y="120" text-anchor="middle">SQLite / DB</text>
-    <text class="stageSub" x="1100" y="134" text-anchor="middle">Client integration</text>
+  <!-- Arrow 5→6 -->
+  <line class="arrow-path a5" x1="969" y1="100" x2="1002" y2="100" stroke="#00D4AA" stroke-width="2"/>
+  <polygon points="1002,96 1010,100 1002,104" fill="#00D4AA"/>
+
+  <!-- Stage 6: Monitor -->
+  <g class="node-box" transform="translate(1010,60)">
+    <rect width="155" height="80" rx="10" fill="#0f1f1a" stroke="#00D4AA" stroke-width="1.5"/>
+    <text x="78" y="22" text-anchor="middle" class="stage-label" fill="#00D4AA">⑥ MONITOR</text>
+    <text x="78" y="42" text-anchor="middle" class="stage-title" fill="#e6edf3">Production Loop</text>
+    <text x="78" y="58" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="10" fill="#8b949e">Logs · Alerts · Drift</text>
+    <text x="78" y="72" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="10" fill="#8b949e">Retrain Trigger</text>
   </g>
+
+  <!-- Feedback loop arc -->
+  <path d="M 1165 60 Q 1185 10 600 10 Q 15 10 35 60"
+        fill="none" stroke="#A371F7" stroke-width="1" stroke-dasharray="6 4" opacity="0.5"/>
+  <text x="600" y="9" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="10" fill="#A371F7" opacity="0.7">← feedback &amp; retrain loop →</text>
 </svg>
